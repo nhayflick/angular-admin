@@ -1,10 +1,15 @@
 <h1>New Venue</h1>
-<form role="form" ng-submit="addVenue()">
+<form name="venueForm" role="form" ng-submit="addVenue()" novalidate>
   <div class="form-group">
-    <input class="form-control" type="text" name="name" ng-model="newVenue.name"/>
+    <label>Venue Name</label>
+    <input class="form-control" type="text" name="name" ng-model="newVenue.name" ng-minlength="3" ng-maxlength="64" ng-required="true"/>
+    <p ng-show="venueForm.name.$error.minlength" class="help-block">Venue name is too short.</p>
+    <p ng-show="venueForm.name.$error.maxlength" class="help-block">Venue name is too long.</p>
   </div>
   <div class="form-group">
-    <input class="form-control" type="text" name="id" ng-model="newVenue.id"/>
+    <label>ID</label>
+    <input class="form-control" type="text" name="id" ng-model="newVenue.id" ng-required="true"/>
+    <p ng-show="venueForm.id.$error.minlength" class="help-block" ng-minlength="1" >No ID present.</p>
   </div>
-  <input class="btn btn-success" type="submit">
+  <input class="btn btn-success" type="submit" ng-disabled="venueForm.$invalid">
 </form>
