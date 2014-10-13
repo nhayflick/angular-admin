@@ -3,7 +3,7 @@ angular-admin
 
 Dummy CRUD dashboard built with AngularJS, Yeoman and UIRouter.
 
-Run:
+Run
 ```bower list```
 to check dependencies and
 ```bower install```
