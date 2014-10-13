@@ -1,0 +1,19 @@
+<h1>Venue Index View</h1>
+<div class="input-group">
+  <label>Order By
+    <select class="form-control" ng-model="orderProp">
+      <option value="name">Name</option>
+      <option value="id">ID</option>
+      <option value="addDate">Date Added</option>
+    </select>
+  </label>
+</div>
+<div class="input-group">
+  <input class="input-lg" ng-model="textMatcher" placeholder="Search for a venue"></input>
+</div>
+<ul>
+  <li ng-repeat="venue in venues | orderBy:orderProp | filter:textMatcher">
+    <h5><a href="#/venue/{{venue.id}}">{{ venue.name }}</a></h5>
+  </li>
+  <a href="#/venue/new" class="btn btn-success">Create New Venue</a>
+</ul>
