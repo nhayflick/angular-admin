@@ -8,14 +8,17 @@
  * Controller of the angularAdminApp
  */
 angular.module('angularAdminApp')
-	.controller('VenueNewCtrl', function ($scope, $resource) {
+	.controller('VenueNewCtrl', function ($scope, $resource, venues) {
 		$scope.newVenue = {};
 		$scope.addVenue = function () {
-    window.alert('save!');
-    var venueResource = $resource('/venues/new', {
+			window.alert('save!');
+			var newVenue = {
 				name: $scope.newVenue.name,
-				id: $scope.newVenue.id
-			});
+				id: parseInt($scope.newVenue.id)
+			};
+			var venueResource = $resource('/venues/new', newVenue);
 			venueResource.save();
+			venues.push(newVenue);
+			document.location.href = '#/venue/' + newVenue.id;
 		};
 	});

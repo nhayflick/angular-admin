@@ -8,7 +8,7 @@
  * Controller of the angularAdminApp
  */
 angular.module('angularAdminApp')
-	.controller('VenueDetailCtrl', function ($scope, $stateParams) {
-		$scope.venue = {};
-		$scope.venue.id = $stateParams.idVenue;
+	.controller('VenueDetailCtrl', function ($scope, $stateParams, venues) {
+		var id = parseInt($stateParams.idVenue);
+		$scope.venue = venues.get(id);
 	});

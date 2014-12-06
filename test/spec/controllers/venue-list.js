@@ -16,7 +16,7 @@ describe('Controller: VenueListCtrl', function () {
 		});
 	}));
 
-	it('should attach a list of awesomeThings to the scope', function () {
-		expect(scope.venues.length).toBe(2);
+	it('should attach a list of venue to the scope', function () {
+		expect(scope.venues.length).toBe(4);
 	});
 });

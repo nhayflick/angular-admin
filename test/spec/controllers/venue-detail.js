@@ -9,9 +9,9 @@ describe('Controller: VenueDetailCtrl', function () {
 		scope;
 
 	// Initialize the controller and a mock scope
-	beforeEach(inject(function ($controller, $routeParams, $rootScope) {
+	beforeEach(inject(function ($controller, $stateParams, $rootScope) {
 		scope = $rootScope.$new();
-		$routeParams.idVenue = 27;
+		$stateParams.idVenue = 27;
 		VenuedetailCtrl = $controller('VenueDetailCtrl', {
 			$scope: scope
 		});

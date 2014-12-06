@@ -6,6 +6,7 @@
         <option value="name">Name</option>
         <option value="id">ID</option>
         <option value="addDate">Date Added</option>
+        <option value="-live">Online</option>
       </select>
     </label>
   </div>
@@ -15,7 +16,7 @@
 </form>
 <ul>
   <li ng-repeat="venue in venues | orderBy:orderProp | filter:textMatcher">
-    <h5><a href="#/venue/{{venue.id}}">{{ venue.name }}</a></h5>
+    <h5><span class="glyphicon {{venue.live | venueLive}}"></span> <a id="venue-{{venue.id}}" href="#/venue/{{venue.id}}">{{ venue.name }}</a></h5>
   </li>
-  <a href="#/venue/new" class="btn btn-success">Create New Venue</a>
+  <a id="new-venue" href="#/venue/new" class="btn btn-success">Create New Venue</a>
 </ul>
