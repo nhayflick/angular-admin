@@ -11,6 +11,6 @@
 angular.module('angularAdminApp')
 	.filter('venueLive', function () {
 		return function (input) {
-			return input ? 'glyphicon-volume-up' : 'glyphicon-volume-off';
+			return input ? 'fa-play' : 'fa-pause';
 		};
 	});

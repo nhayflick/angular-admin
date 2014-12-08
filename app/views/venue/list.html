@@ -1,22 +1,62 @@
-<h1>Venue Index View</h1>
-<form class="form-inline">
-  <div class="form-group">
-    <label>Order By
-      <select class="form-control" ng-model="orderProp">
-        <option value="name">Name</option>
-        <option value="id">ID</option>
-        <option value="addDate">Date Added</option>
-        <option value="-live">Online</option>
-      </select>
-    </label>
-  </div>
-  <div class="form-group">
-    <input class="input-sm" ng-model="textMatcher" placeholder="Search for a venue"></input>
-  </div>
-</form>
-<ul>
-  <li ng-repeat="venue in venues | orderBy:orderProp | filter:textMatcher">
-    <h5><span class="glyphicon {{venue.live | venueLive}}"></span> <a id="venue-{{venue.id}}" href="#/venue/{{venue.id}}">{{ venue.name }}</a></h5>
-  </li>
-  <a id="new-venue" href="#/venue/new" class="btn btn-success">Create New Venue</a>
-</ul>
+<md-toolbar layout-padding>
+  <h3>Venues</h3>
+</md-toolbar>
+<md-content class="md-padding">
+  <div layout="column">
+    <div flex>
+      <md-text-float label="Seach by Venue" ng-model="textMatcher"></md-text-float>
+    </div>
+    <div flex>
+      <label>Order By
+       <md-radio-group ng-model="orderProp" aria-label="Order By">
+        <div layout="row">
+          <div flex>
+            <md-radio-button value="name" aria-label="Name">
+              Name
+            </md-radio-button>
+          </div>
+          <div flex>
+            <md-radio-button  value="id" aria-label="ID">
+            ID
+            </md-radio-button>
+          </div>
+        </div>
+        <div layout="row">
+          <div flex>
+            <md-radio-button value="addDate" aria-label="Date Added">
+              Date Added
+            </md-radio-button>
+          </div>
+          <div flex>
+            <md-radio-button value="-live" aria-label="Online">
+              Online
+            </md-radio-button>
+          </div>
+        </div>
+        </md-radio-group>
+      </label>
+    </div>
+   </div>
+   <div layout layout-align="center center">
+    <i>{{(venues | filter:textMatcher).length}} results found.</i>
+    </div>
+  <md-divider></md-divider>
+   <md-list>
+      <md-item ng-repeat="venue in venues | orderBy:orderProp | filter:textMatcher">
+        <md-item-content>
+          <div class="md-tile-left">
+            <i class="fa {{venue.live | venueLive}}"></i>
+          </div>
+          <div class="md-tile-content">
+            <h5><a id="venue-{{venue.id}}" href="#/venue/{{venue.id}}">{{ venue.name }}</a></h5>
+          </div>
+        </md-item-content>
+         <md-divider ng-if="!$last"></md-divider>
+      </md-item>
+      <md-item>
+        <md-item-content>
+         <md-button class="md-raised md-primary" href="#/venue/new" layout layout-fill layout-padding layout-align="center center" >Create New Venue</md-button>
+        </md-item-content>
+      </md-item>
+  </md-list>
+</md-content>

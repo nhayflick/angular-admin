@@ -15,7 +15,8 @@ angular
 		'ngResource',
 		'ui.router',
 		'ngSanitize',
-		'ngTouch'
+		'ngTouch',
+		'ngMaterial'
 	])
 	.config(function ($urlRouterProvider, $stateProvider) {
 		$urlRouterProvider.otherwise('index');
